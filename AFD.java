@@ -14,7 +14,8 @@ public class AFD extends Leitor {
     private String[] finalStatesAFD;
     private List<String[]> conditionsAFD;
     private List<String[]> inputFormatted = new ArrayList<String[]>();
-    private List<String> input;
+    private List<String> message= new ArrayList<String>();
+    private String output;
     private String estadoAtual;
 /*
 -Primeiro ele vai ler o input
@@ -67,12 +68,15 @@ public class AFD extends Leitor {
         }*/
     }
 
-    public void verificarCondicao(){
+    public void verificarCondicao(String outputOut, String inputIn) throws IOException{
+
+        Path arquivo = Paths.get(inputIn);
+        List<String> fileInput = Files.readAllLines(arquivo);
+
 
         for(int i=0;i<this.inputFormatted.size();i++){
             int j=0;
 
-            
             for(String input:inputFormatted.get(i)){
                 
 
@@ -86,6 +90,7 @@ public class AFD extends Leitor {
                 //encontra todos as opções do estado atual
                 //verifico a entrada com as condições de cada opção, se não bater já para. Se bater trocar
                 //System.out.println(this.conditionsAFD.size());
+                int achou=0;
                 for(String[] aux:conditionsAFD){
                 //Achar as condições do estadoAtual
                 //F,a,Z
@@ -93,18 +98,33 @@ public class AFD extends Leitor {
                     if(estadoAtual.equals(aux[0])){
                         //Achamos as condições, agora teremos que verificar se bate com o input
                         if(input.equals(aux[1])){
+                            achou=1;
                             //Achamos que o input bate, agora mudaremos de estado
                             estadoAtual = aux[2];
+                            break;
                         }
                     }
-                
+                }
+                if(achou==0){
+                    estadoAtual = "ERRO";
+                    break;
                 }
                 j++;
-
             } 
-            System.out.println(estadoAtual);  
+            
+            for(String aux:this.finalStatesAFD){
+                if(estadoAtual.equals(aux)){
+                    output = "A";
+                    break;
+                }
+                else{
+                    output="R";
+                }
+            }
+            message.add(output+";"+fileInput.get(i));
         }
-
+        escreverArquivo(outputOut, message);
+        System.out.println("Finalizando AFD...\nFIM");
     }
 
 }

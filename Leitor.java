@@ -82,5 +82,13 @@ public class Leitor {
 
     }
 
+
+    public void escreverArquivo(String path, List<String> message) throws IOException{
+        System.out.println("Gravando resultados em um arquivo...");
+        Path arquivo = Paths.get(path);
+        Files.write(arquivo, message);
+        System.out.println("Gravado com Sucesso!");
+    }
+
 }
 

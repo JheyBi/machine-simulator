@@ -1,7 +1,9 @@
 F
 F
-F1,F2,F3
-F,a,T
-F,b,Z
-Z,b,T
+Z
+F,1,Z
+F,0,F
+Z,0,Z
+Z,1,F
+
 

@@ -22,7 +22,7 @@ public class Main {
 
             case "F":{
                 AFD machine = new AFD(l.getInitialState(), l.getFinalStates(), l.getConditions());
-                machine.verificarCondicao();
+                machine.verificarCondicao("output.txt", "input.txt" );
                 break;
             }
 
