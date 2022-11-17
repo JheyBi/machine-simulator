@@ -90,30 +90,21 @@ public class AFD extends Leitor {
                 //Achar as condições do estadoAtual
                 //F,a,Z
                 //F,b,Y
-
                     if(estadoAtual.equals(aux[0])){
-
-                        System.out.println(estadoAtual + " - "+ aux[0]);
-
+                        //Achamos as condições, agora teremos que verificar se bate com o input
+                        if(input.equals(aux[1])){
+                            //Achamos que o input bate, agora mudaremos de estado
+                            estadoAtual = aux[2];
+                        }
                     }
                 
                 }
-                // System.out.println(linhas);
                 j++;
 
-            }   
+            } 
+            System.out.println(estadoAtual);  
         }
 
     }
-
-    /*
- abababababab
- bbbbbbababababa
- abababababbaaaaa
- abababab
-    */
-
-
-
 
 }
