@@ -36,6 +36,7 @@ public class Leitor {
     public void setFinalStates(String[] finalStates) {
         this.finalStates = finalStates;
     }
+
     public List<String[]> getConditions() {
         return conditions;
     }
@@ -50,10 +51,8 @@ public class Leitor {
     /* FUNCOES */
     public void lerArquivo(String path) throws IOException{
 
-        Path arquivo = Paths.get("teste.txt");
-        if(Files.exists(arquivo)){
-            System.out.println("Arquivo existe");
-        }else{
+        Path arquivo = Paths.get(path);
+        if(!Files.exists(arquivo)){
             System.out.println("Não existe");
         }
 
