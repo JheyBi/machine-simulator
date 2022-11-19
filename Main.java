@@ -4,8 +4,11 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws IOException{
 
+        String specsPath =args[0];
+        String inputPath = args[1];
+        String outputPath = args[2];
         Leitor l = new Leitor();
-        l.lerArquivo("specs.txt");
+        l.lerArquivo(specsPath);
         // System.out.println(l.getTypeMachine());
         // System.out.println(l.getInitialState());
         // for(String aux:l.getFinalStates()){
@@ -22,7 +25,7 @@ public class Main {
 
             case "F":{
                 AFD machine = new AFD(l.getInitialState(), l.getFinalStates(), l.getConditions());
-                machine.verificarCondicao("output.txt", "input.txt" );
+                machine.verificarCondicao(outputPath, inputPath );
                 break;
             }
 
