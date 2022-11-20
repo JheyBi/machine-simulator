@@ -1,6 +1,9 @@
 import java.io.IOException;
 
 
+/*Autômatos de Pilha Determinísticos (P)
+0,a;x;y,1 -- (transição de q0 para q1 lendo a da fita, x da pilha e escrevendo y na pilha) */
+
 public class Main {
     public static void main(String[] args) throws IOException{
 
@@ -19,6 +22,8 @@ public class Main {
             }
 
             case "P":{
+                AP machine = new AP(l.getInitialState(), l.getFinalStates(), l.getConditions(), inputPath);
+                machine.verificarCondicao(outputPath, inputPath);
                 break;
             }
 
