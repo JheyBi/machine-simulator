@@ -44,12 +44,12 @@ public class AFD extends Leitor {
         -senão vai escrever errado
 */
 
-    public AFD(String initialStateAFD, String[] finalStatesAFD, List<String[]> conditionsAFD) throws IOException{
+    public AFD(String initialStateAFD, String[] finalStatesAFD, List<String[]> conditionsAFD, String inputIn) throws IOException{
         System.out.println("Inicializando o AFD..");
         this.initialStateAFD = initialStateAFD;
         this.finalStatesAFD = finalStatesAFD;
         this.conditionsAFD = conditionsAFD;
-        this.lerEntrada("input.txt");
+        this.lerEntrada(inputIn);
     }
 
     public void lerEntrada(String path) throws IOException{
@@ -72,7 +72,6 @@ public class AFD extends Leitor {
 
         Path arquivo = Paths.get(inputIn);
         List<String> fileInput = Files.readAllLines(arquivo);
-
 
         for(int i=0;i<this.inputFormatted.size();i++){
             int j=0;
@@ -122,9 +121,12 @@ public class AFD extends Leitor {
                 }
             }
             message.add(output+";"+fileInput.get(i));
+
         }
+
         escreverArquivo(outputOut, message);
         System.out.println("Finalizando AFD...\nFIM");
+
     }
 
 }
