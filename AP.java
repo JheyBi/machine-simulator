@@ -120,45 +120,54 @@ public class AP extends Leitor{
 
                         //aux[0] 0
                         if(input.equals(aux2[0])){
-                            int desempilhar=0;
-
-
-                            //ab
-                            //F,a;_;X,F
-                            //F,b;X;_,Z
-                            // aux2[0] aux2[1] aux2[2] - pilha
-                            // a      - _ -      X       null
-                            // b      - X -     _            X
-                            // F  → F → Z                 null
 
                             // Se for vazio
                             String top = stack_peek(pilha);
 
+                            //Logica - Leonardo faria
+                            /*
+                            if(aux2[1].equals("_") || top.equals(aux2[2])){
+                                pilha.push(aux2[2]);
+                                estadoAtual = aux[2];
+                                achou=1;
+                                break;
+                            }
+                            else if(top.equals(aux2[1])){
+
+                                pilha.pop();
+                                estadoAtual = aux[2];
+                                achou=1;
+                                break;
+
+                            }
+                            else{
+                                break;
+                            }
+                            */
+
+
+                            //Logica - João Bernardo
+
+                            int desempilhar=0;
                             //Desempilhar
                             //Se não tiver que desempilhar nada
-
-                            if(aux2[1].equals("_")){
-                                System.out.println("1");
+                           if(aux2[1].equals("_")){
                                 desempilhar=1;
                             }
                             // Se tiver que desempilhar alguma coisa
                             else if(top.equals(aux2[1])){
-                                System.out.println("3");
                                 pilha.pop(); //aux[1].get(1) x
                                 desempilhar=1;
                             }
 
-
                             //Empilhar
                             //Se não tiver que empilhar nada
                             if(desempilhar==1 && aux2[2].equals("_")){
-                                System.out.println("4");
                                 estadoAtual = aux[2];
                                 achou=1;
                                 break;
                             }
                             else if(desempilhar==1){
-                                System.out.println("2");
                                 pilha.push(aux2[2]);
                                 estadoAtual = aux[2];
                                 achou=1;

@@ -1,0 +1,7 @@
+A;aabb
+R;aaabb
+R;aabbb
+A;aaabbb
+A;ab
+A;aaaaabbbbb
+R;abbaaabbbbaaababbaba
