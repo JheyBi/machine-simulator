@@ -1,7 +1,4 @@
-aabb
-aaabb
-aabbb
-aaabbb
 ab
-aaaaabbbbb
-abbaaabbbbaaababbaba
+aabb
+aaabbb
+abbb

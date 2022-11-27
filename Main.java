@@ -28,10 +28,13 @@ public class Main {
             }
 
             case "T":{
+                MT machine = new MT(l.getInitialState(), l.getFinalStates(), l.getConditions(), inputPath);
+                machine.verificarCondicao(outputPath);
                 break;
             }
 
             default :{
+                System.out.println("Máquina não reconhecida, desligando...\n FIM");
                 break;
             }
 
