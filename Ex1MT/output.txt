@@ -1,0 +1,4 @@
+R;ABc
+R;AABBcc
+R;AAABBBccc
+R;ABbbcc

@@ -1,4 +1,0 @@
-A;AB
-A;AABB
-A;AAABBB
-R;ABbb

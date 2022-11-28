@@ -63,13 +63,13 @@ public class AP extends Leitor{
         List<String> input = Files.readAllLines(arquivo);
         for(int i  = 0; i < input.size(); i++ ){
             //System.out.println(input.get(i).split(""));
-            inputFormatted.add(input.get(i).split(""));
+            inputFormatted.add(input.get(i).concat("_").split(""));
         }
-        /*for(int i=0;i<inputFormatted.size();i++){
-             for(String linhas:inputFormatted.get(i)){
-                System.out.println(linhas);
-             }   
-        }*/
+        // for(int i=0;i<inputFormatted.size();i++){
+        //      for(String linhas:inputFormatted.get(i)){
+        //         System.out.println(linhas);
+        //      }   
+        // }
     }
 
     // Displaying element on the top of the stack
@@ -91,11 +91,12 @@ public class AP extends Leitor{
         List<String> fileInput = Files.readAllLines(arquivo);
 
         for(int i=0;i<this.inputFormatted.size();i++){
+            
             int j=0;
             pilha.clear();
-
+            pilha.push("Z");
+            
             for(String input:inputFormatted.get(i)){
-                
 
                 //Setando o estadoAtual como o primeiro estado
                 if(j==0){
@@ -106,27 +107,24 @@ public class AP extends Leitor{
 
                 //encontra todos as opções do estado atual
                 //verifico a entrada com as condições de cada opção, se não bater já para. Se bater trocar
-                //System.out.println(this.conditionsAFD.size());
                 int achou=0;
                 for(String[] aux:conditionsAP){
-                //Achar as condições do estadoAtual
-                //F,a,Z
-                //F,b,Y
-                //0,a;x;y,1
-                //Split no aux[1]
+                    //Achar as condições do estadoAtual
+                    //F,a,Z
+                    //F,b,Y
+                    //0,a;x;y,1
+                    //Split no aux[1]
                     String[] aux2 = aux[1].split(";");
                     if(estadoAtual.equals(aux[0])){
+                        
                         //Achamos as condições, agora teremos que verificar se bate com o input
-
                         //aux[0] 0
-                        if(input.equals(aux2[0])){
-
+                        if (input.equals(aux2[0])){
+                            
                             // Se for vazio
                             String top = stack_peek(pilha);
-
-                            //Logica - Leonardo faria
-                            /*
-                            if(aux2[1].equals("_") || top.equals(aux2[2])){
+                            //Logica - Leonardo Faria
+                            /*if(aux2[1].equals("_") || top.equals(aux2[2])){
                                 pilha.push(aux2[2]);
                                 estadoAtual = aux[2];
                                 achou=1;
@@ -142,40 +140,48 @@ public class AP extends Leitor{
                             }
                             else{
                                 break;
-                            }
-                            */
-
+                            }*/
 
                             //Logica - João Bernardo
-
                             int desempilhar=0;
+                            
                             //Desempilhar
                             //Se não tiver que desempilhar nada
-                           if(aux2[1].equals("_")){
+                            if(aux2[1].equals("_")){
+                            
                                 desempilhar=1;
+                            
                             }
                             // Se tiver que desempilhar alguma coisa
                             else if(top.equals(aux2[1])){
+                                
                                 pilha.pop(); //aux[1].get(1) x
                                 desempilhar=1;
+                            
                             }
 
                             //Empilhar
                             //Se não tiver que empilhar nada
                             if(desempilhar==1 && aux2[2].equals("_")){
+                                
                                 estadoAtual = aux[2];
                                 achou=1;
                                 break;
+
                             }
                             else if(desempilhar==1){
+                                
                                 pilha.push(aux2[2]);
                                 estadoAtual = aux[2];
                                 achou=1;
                                 break;
+                            
                             }
 
                         }
+                        
                     }
+
                 }
                 
                 if(achou==0){
@@ -188,6 +194,7 @@ public class AP extends Leitor{
             } 
             
             for(String aux:this.finalStatesAP){
+
                 System.out.println(estadoAtual);
                 if(estadoAtual.equals(aux) && pilha.empty()){
 
@@ -197,6 +204,7 @@ public class AP extends Leitor{
                 else{
                     output="R";
                 }
+                
             }
             message.add(output+";"+fileInput.get(i));
             
