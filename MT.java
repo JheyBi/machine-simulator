@@ -73,7 +73,7 @@ Maquina de Turing
         List<String> input = Files.readAllLines(arquivo);
         for(int i  = 0; i < input.size(); i++ ){
             //System.out.println(input.get(i).split(""));
-            inputFormatted.add(input.get(i).split(""));
+            inputFormatted.add(input.get(i).concat("_").split(""));
         }
         /*for(int i=0;i<inputFormatted.size();i++){
              for(String linhas:inputFormatted.get(i)){
