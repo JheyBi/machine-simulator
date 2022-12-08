@@ -105,10 +105,10 @@ Ao final de cada linha, concatenamos com A ou R e gravamos em uma lista, no fim 
     4 abbb
 
 #### output.txt
-    1 R;AB
-    2 R;AABB
-    3 R;AAABBB
-    4 R;ABbb
+    1 A;AB_
+    2 A;AABB_
+    3 A;AAABBB_
+    4 R;ABbb_
 
 ### Como utilizar
 
